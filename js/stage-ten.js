@@ -38,7 +38,7 @@
   const LAYERS = [
     'BG_10.png', 'ui1_10.png', 'ui2_10.png', 'ui3_10.png', 'talking_10.png',
     'button1_10.png', 'button2_10_v2.png', 'button3_10_v2.png', 'button4_10.png',
-    'Ze_10.png', 'LittleWhite_10.png', 'Ending.png'
+    'Ze_10.png', 'LittleWhite_10.png', 'Ending_v2.png'
   ];
 
   function layer(file, className, alt = '') {
@@ -70,6 +70,7 @@
 
         <strong class="s10-progress-count" aria-live="polite">0／4</strong>
         <p class="s10-footer-caption">點擊不同區域，看看中壢地區的美麗風景。</p>
+        <button class="s10-quick-pass" type="button" aria-label="快速通關，直接播放結尾影片">快速通關 <span aria-hidden="true">▶</span></button>
         <button class="s10-back" type="button" aria-label="返回階段九"><img src="assets/common/previous_ui.png" alt="返回階段九"></button>
         <button class="s10-sound" type="button" aria-label="切換音效" aria-pressed="true"><img src="assets/common/sound_ui.png" alt="音效"></button>
         <div class="s10-live-status sr-only" role="status" aria-live="polite"></div>
@@ -96,7 +97,7 @@
       </section>
 
       <button class="s10-ending-card" type="button" aria-label="歡迎蒞臨中壢水資源回收中心，點擊返回遊戲首頁" aria-hidden="true">
-        <img src="${ROOT}/Ending.png" alt="歡迎蒞臨中壢水資源回收中心">
+        <img src="${ROOT}/Ending_v2.png" alt="歡迎蒞臨中壢水資源回收中心">
       </button>
     `;
   }
@@ -230,6 +231,7 @@
     }
 
     function playEndingVideo() {
+      if (!active || finishing || videoPanel.classList.contains('is-visible') || endingCard.classList.contains('is-visible')) return;
       audioWasMuted = global.GameAudio?.isMuted?.() ?? false;
       global.GameAudio?.setMuted(true);
       videoPanel.classList.add('is-visible');
@@ -270,6 +272,7 @@
     });
     galleryClose.addEventListener('click', () => closeGallery(false));
     galleryAdvance.addEventListener('click', advanceGallery);
+    element.querySelector('.s10-quick-pass').addEventListener('click', playEndingVideo);
     video.addEventListener('ended', showEndingCard);
     video.addEventListener('error', () => {
       videoMessage.textContent = '影片暫時無法播放，可以返回遊戲首頁。';

@@ -67,6 +67,9 @@
 .s5-detail-people { z-index: 4; transform-origin: center bottom; }
 .s5-main-speech,
 .s5-detail-speech { z-index: 5; }
+.s5-corrected-speech { position:absolute; inset:0; z-index:5; pointer-events:none; }
+.s5-corrected-speech p { position:absolute; top:18%; left:18.6%; width:24%; margin:0; color:#444; font-size:clamp(10px,1.25vw,26px); line-height:1.4; }
+.s5-corrected-speech p + p { left:63.8%; }
 
 .s5-topbar {
   position: absolute;

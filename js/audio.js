@@ -30,8 +30,8 @@
     musicGain = context.createGain();
     effectsGain = context.createGain();
 
-    masterGain.gain.value = muted ? 0 : 1.00;
-    musicGain.gain.value = 2.00;
+    masterGain.gain.value = muted ? 0 : 0.82;
+    musicGain.gain.value = 0.72;
     effectsGain.gain.value = 0.9;
     musicGain.connect(masterGain);
     effectsGain.connect(masterGain);

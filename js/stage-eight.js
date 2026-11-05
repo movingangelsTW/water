@@ -23,7 +23,7 @@
   ];
 
   const LAYER_FILES = [
-    'BG_08.png', 'ui1_08.png', 'ui2_08.png', 'ui3_08.png', 'ui4_08.png', 'ui5_08.png',
+    'BG_08.png', 'ui1_08_v2.png', 'ui2_08.png', 'ui3_08.png', 'ui4_08.png', 'ui5_08.png',
     'talking_08.png', 'button1_08.png', 'button2_08.png', 'button3_08.png', 'button4_08.png'
   ];
 
@@ -45,8 +45,8 @@
         ${layer('ui4_08.png', 's8-question-panel')}
         ${layer('ui5_08.png', 's8-status-panel')}
         <img class="s8-layer s8-common-frame" src="assets/common/all_ui.png" alt="" aria-hidden="true">
-        ${layer('ui1_08.png', 's8-title s8-title-main', '什麼可以丟馬桶？')}
-        ${layer('ui1_08.png', 's8-title s8-title-subtitle', '接管後續維護宣導')}
+        ${layer('ui1_08_v2.png', 's8-title s8-title-main', '這個應該丟哪裡？')}
+        ${layer('ui1_08_v2.png', 's8-title s8-title-subtitle', '接管後續維護宣導')}
         ${layer('ui2_08.png', 's8-stage-count', '階段 8/9')}
 
         <div class="s8-round" aria-hidden="true">第 <span class="s8-round-current">1</span>／${TOTAL_QUESTIONS} 題</div>

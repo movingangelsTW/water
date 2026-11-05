@@ -1177,3 +1177,6 @@
   .s4-objective { left: 0; }
   .s4-staff-copy em { font-size: clamp(6px, .58vw, 10px); }
 }
+
+/* 指定說明圖直接呈現，移除舊文字覆蓋層。 */
+.s4-objective > div:first-child { display: none; }

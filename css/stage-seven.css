@@ -24,6 +24,8 @@
   pointer-events: none;
 }
 
+.s7-text-title { position:absolute; z-index:5; left:35%; top:4.4%; width:30%; margin:0; text-align:center; color:white; font-size:clamp(22px,3vw,58px); line-height:1.1; font-weight:900; white-space:nowrap; text-shadow:2px 2px #499cff,-2px -2px #499cff,2px -2px #499cff,-2px 2px #499cff; }
+.s7-hotline-copy { position:absolute; z-index:5; left:69%; top:43%; width:25%; margin:0; padding:1% 0; text-align:center; background:#dff9ff; color:#294c64; font-size:clamp(14px,1.6vw,31px); line-height:1.5; }
 .s7-background { z-index: 0; }
 .s7-people { z-index: 1; }
 .s7-photo { z-index: 2; }
@@ -148,12 +150,12 @@
   bottom: 10.65%;
   margin: 0;
   color: #0870cf;
-  font-size: clamp(12px,1.36vw,28px);
+  font-size: clamp(18px,2vw,40px);
   font-weight: 900;
   line-height: 1.15;
   text-align: center;
   letter-spacing: .035em;
-  white-space: nowrap;
+  white-space: normal;
   pointer-events: none;
 }
 

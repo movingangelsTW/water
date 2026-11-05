@@ -150,7 +150,7 @@
   position: absolute;
   z-index: 8;
   left: 13.2%;
-  right: 13.2%;
+  right: 23%;
   bottom: 10.55%;
   margin: 0;
   color: #0870cf;
@@ -159,7 +159,7 @@
   line-height: 1.15;
   letter-spacing: .035em;
   text-align: center;
-  white-space: nowrap;
+  white-space: normal;
   pointer-events: none;
 }
 
@@ -394,3 +394,5 @@
   .stage-ten.is-entering .s10-littlewhite,
   .stage-ten.is-ready .s10-littlewhite { animation: none !important; }
 }
+.s10-quick-pass { position:absolute; z-index:12; right:3.7%; bottom:6%; width:17%; padding:.45em .2em; border:3px solid #75dfff; border-radius:999px; background:linear-gradient(#33b6ff,#0074e7 50%,#0050ba); box-shadow:0 0 0 3px #086bd2,inset 0 0 0 2px #a4ecff; color:white; font:900 clamp(16px,2.1vw,40px)/1.2 "Microsoft JhengHei",sans-serif; text-shadow:1px 2px #174f9c; cursor:pointer; }
+.s10-quick-pass:focus-visible { outline:4px solid #ffdf5c; outline-offset:5px; }

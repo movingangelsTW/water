@@ -1,11 +1,11 @@
 (function registerStageSixModule(global) {
   const ROOT = 'assets/stage6';
   const STEPS = [
-    { id: 1, label: '說明會與簽署', photo: 'photo1_06.png', position: 'upper-right' },
-    { id: 2, label: '施工現場放樣', photo: 'photo2_06.png', position: 'lower-left' },
-    { id: 3, label: '改管佈設', photo: 'photo3_06.png', position: 'lower-center-left' },
-    { id: 4, label: '銜接與試水', photo: 'photo4_06.png', position: 'lower-center-right' },
-    { id: 5, label: '化糞池清理', photo: 'photo5_06.png', position: 'lower-right' }
+    { id: 1, label: '說明會與簽署', photo: 'photo1_06_v2.png', position: 'upper-right' },
+    { id: 2, label: '施工現場放樣', photo: 'photo2_06_v3.png', position: 'lower-left' },
+    { id: 3, label: '改管佈設', photo: 'photo3_06_v3.png', position: 'lower-center-left' },
+    { id: 4, label: '銜接與試水', photo: 'photo4_06_v2.png', position: 'lower-center-right' },
+    { id: 5, label: '化糞池清理', photo: 'photo5_06_v2.png', position: 'lower-right' }
   ];
 
   function layer(file, className, alt = '') {
@@ -31,15 +31,15 @@
         ${layer('LittleWhite_06.png', 's6-littlewhite', '小白')}
         <span class="s6-dialogue-bubble" aria-hidden="true"></span>
         ${layer('talking_06.png', 's6-talking', '地下的工程雖然看不見，卻能讓生活越來越好。')}
-        ${layer('ui3_06_v2.png', 's6-notice', '工程期間可能帶來不便，請大家多多包涵。施工時間為上午八點至下午八點。')}
+        ${layer('ui3_06_v3.png', 's6-notice', '工程期間可能帶來不便，請大家多多包涵。施工時間為上午9點至下午4點；彈性調整時段為上午8點至下午8點。')}
 
         <div class="s6-npc-layer" aria-live="polite">
           ${STEPS.map(step => layer(`NPC${step.id}_06.png`, `s6-npc s6-npc-${step.id}`, `${step.label}完成`)).join('')}
         </div>
 
         <button class="s6-touch-target" type="button" aria-label="點擊查看說明會與簽署">
-          <img src="${ROOT}/touch.png" alt="點擊提示">
-          <span>點擊查看</span>
+          <img src="${ROOT}/touch_6_v2.png" alt="點擊提示">
+          <span>1.點擊查看</span>
         </button>
 
         <p class="s6-footer-caption">短暫的不便，是為了長久的便利與安全。</p>
@@ -78,9 +78,9 @@
     let skipResetTimer = 0;
 
     const preloadFiles = [
-      'BG_06.png', 'LittleWhite_06.png', 'talking_06.png', 'ui1_06.png', 'ui2_06.png', 'ui3_06_v2.png',
-      'NPC1_06.png', 'NPC2_06.png', 'NPC3_06.png', 'NPC4_06.png', 'NPC5_06.png', 'touch.png',
-      'photo1_06.png', 'photo2_06.png', 'photo3_06.png', 'photo4_06.png', 'photo5_06.png'
+      'BG_06.png', 'LittleWhite_06.png', 'talking_06.png', 'ui1_06.png', 'ui2_06.png', 'ui3_06_v3.png',
+      'NPC1_06.png', 'NPC2_06.png', 'NPC3_06.png', 'NPC4_06.png', 'NPC5_06.png', 'touch_6_v2.png',
+      ...STEPS.map(step => step.photo)
     ];
     const preloadMap = new Map(preloadFiles.map(file => {
       const image = new Image();
@@ -111,7 +111,8 @@
       }
       touch.hidden = false;
       touch.dataset.position = step.position;
-      touch.setAttribute('aria-label', `點擊查看${step.label}`);
+      touch.setAttribute('aria-label', `${step.id}.點擊查看${step.label}`);
+      touch.querySelector('span').textContent = `${step.id}.點擊查看`;
     }
 
     function resetSkipCounter(message = '') {

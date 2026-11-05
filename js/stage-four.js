@@ -1,14 +1,14 @@
 (function registerStageFourModule(global) {
   const wait = ms => new Promise(resolve => global.setTimeout(resolve, ms));
   const TOTAL_TIME = 180;
-  const WORK_REQUIRED = 30;
+  const WORK_REQUIRED = 15;
   const ZONE_UNLOCKS = [0, 15, 30, 45];
   const NARRATION_INTERVAL = 6;
 
   const ROLE_DATA = {
     traffic: { label: '交通義工', short: '義工', icon: 'NPC1icon_04.png', sprite: 'NPC1_04.png', className: 's4-person-traffic' },
     worker: { label: '接管工人', short: '接管', icon: 'NPC2icon_04.png', sprite: 'NPC2_04.png', className: 's4-person-worker' },
-    eco: { label: '環保團體', short: '環保', icon: 'NPC3icon_3.png', sprite: 'NPC3_3.png', className: 's4-person-eco' }
+    eco: { label: '民眾', short: '民眾', icon: 'NPC3icon_04_v2.png', sprite: 'NPC3_3_04_v2.png', className: 's4-person-eco' }
   };
 
   const ROLE_NARRATIONS = {
@@ -28,10 +28,10 @@
     ],
     eco: [
       '♻️ 工程要做，環境也要顧！',
-      '🌱 一起把施工周邊整理乾淨！',
+      '🌱 一起了解下水道工程！',
       '🧹 施工不髒亂，環境更舒服！',
-      '🌿 巡一巡，把周邊環境顧好！',
-      '💚 大家一起施工，也一起愛環境！'
+      '🌿 支持工程，期待更好的生活環境！',
+      '💚 大家共同參與，一起愛環境！'
     ]
   };
 
@@ -51,8 +51,8 @@
       <article class="s4-zone s4-zone-${index + 1}" data-zone="${index}" data-unlocked="${index === 0}" tabindex="0" role="button" aria-label="${zone.title}${index ? `，${ZONE_UNLOCKS[index]} 秒後解鎖` : '，已解鎖'}">
         <span class="s4-zone-lock"><b>${zone.title}</b><span>🔒 ${ZONE_UNLOCKS[index]} 秒後解鎖</span></span>
         <span class="s4-zone-progress">
-          <span class="s4-progress-line"><small>義交</small><i><b data-progress="traffic"></b></i><em data-seconds="traffic">0/30</em></span>
-          <span class="s4-progress-line"><small>接管</small><i><b data-progress="worker"></b></i><em data-seconds="worker">0/30</em></span>
+          <span class="s4-progress-line"><small>義交</small><i><b data-progress="traffic"></b></i><em data-seconds="traffic">0/15</em></span>
+          <span class="s4-progress-line"><small>接管</small><i><b data-progress="worker"></b></i><em data-seconds="worker">0/15</em></span>
         </span>
         <span class="s4-zone-tokens" aria-label="已配置人員"></span>
         <span class="s4-zone-complete">工程完成！</span>
@@ -68,13 +68,12 @@
         <img src="assets/stage4-new/BG2_04.png" alt="">
         <img src="assets/stage4-new/BG3_04_v2.png" alt="">
         <img src="assets/stage4-new/Ui1_04.png" alt="">
-        <img class="s4-staff-art s4-staff-art-eco" src="assets/stage4-new/Ui1_1_04.png" alt="">
+        <img class="s4-staff-art s4-staff-art-eco" src="assets/stage4-new/Ui1_1_04_v2.png" alt="">
         <img class="s4-staff-art s4-staff-art-worker" src="assets/stage4-new/Ui1_2_04.png" alt="">
         <img class="s4-staff-art s4-staff-art-traffic" src="assets/stage4-new/Ui1_3_04.png" alt="">
         <img class="s4-art-time" src="assets/stage4-new/Ui2_04.png" alt="">
-        <img class="s4-art-objective" src="assets/stage4-new/Ui3_04.png" alt="">
+        <img class="s4-art-objective" src="assets/stage4-new/Ui3_04_v2.png" alt="">
         <img class="s4-art-progress" src="assets/stage4-new/Ui4_04.png" alt="">
-        <img src="assets/stage4-new/Ui6_04.png" alt="">
       </div>
 
       <div class="s4-ui-layer">
@@ -86,7 +85,7 @@
           </svg>
           <strong>階段 4/9</strong>
         </span>
-        <span class="s4-stage-title" role="img" aria-label="大家分工合作！合理安排工作人員"><strong>大家分工合作！</strong><small>合理安排工作人員</small></span>
+        <span class="s4-stage-title" role="img" aria-label="大家共同參與！共同參與下水道工程"><strong>大家共同參與！</strong><small>共同參與下水道工程</small></span>
         <button class="s4-icon-button s4-sound-button" type="button" aria-label="切換音效" aria-pressed="true"><img src="assets/common/sound_ui.png" alt="音效"></button>
         <button class="s4-icon-button s4-settings-button" type="button" aria-label="開啟遊戲設定"><span aria-hidden="true">⚙</span></button>
         <button class="s4-back-button" type="button" aria-label="返回階段三"><img src="assets/common/previous_ui.png" alt="返回"></button>
@@ -106,12 +105,12 @@
           <span class="s4-staff-copy"><b>接管工人</b><small>檢修管線，解決排水問題！</small><em data-role-count="worker">可用 1／1</em></span>
         </button>
         <button class="s4-staff-source" type="button" data-role="eco" aria-pressed="false">
-          <span class="s4-staff-copy"><b>環保團體</b><small>宣導環保，提升工程效率！</small><em data-role-count="eco">可用 1／1</em></span>
+          <span class="s4-staff-copy"><b>民眾</b><small>共同參與，支持工程！</small><em data-role-count="eco">可用 1／1</em></span>
         </button>
       </aside>
 
       <section class="s4-objective" aria-label="任務目標">
-        <div><b>目標：</b>讓交通義工、接管工人、環保團體在同一地區工作滿 30 秒。</div>
+        <div><b>目標：</b>交通義工與接管工人各工作滿 15 秒；民眾共同參與、支持工程。</div>
         <div class="s4-unlock-road" aria-label="工程區解鎖進度">
           ${ZONE_DATA.map((zone, index) => `<span data-road="${index}" class="${index === 0 ? 'is-open' : ''}"><i>${index === 0 ? '⚓' : '🔒'}</i><small>${index + 1}區</small></span>`).join('')}
         </div>
@@ -133,7 +132,7 @@
         <div class="s4-intro-card">
           <span class="s4-intro-kicker">本關為遊戲關卡</span>
           <h2 id="s4-intro-title">分工完成四區工程</h2>
-          <p id="s4-intro-copy">把交通義工、接管工人與環保團體拖到已解鎖區域；讓義交與接管工人各工作滿 30 秒，完成四區工程。</p>
+          <p id="s4-intro-copy">安排交通義工與接管工人到已解鎖區域，各工作滿 15 秒即可完成工程。邀請民眾共同參與、支持工程；民眾不需執行施工工作。</p>
           <button class="s4-intro-start" type="button">開始遊戲</button>
         </div>
       </div>
@@ -141,7 +140,7 @@
       <div class="s4-settings-panel" aria-hidden="true">
         <div>
           <h2>遊戲說明</h2>
-          <p>拖曳或點選工作人員，再放到已解鎖的施工區。義交與接管工人都完成 30 秒工作即可完成該區；環保團體會加速進度，烏雲則會減速。</p>
+          <p>拖曳或點選工作人員，再放到已解鎖的施工區。義交與接管工人都完成 15 秒工作即可完成該區；民眾參與支持，不執行施工工作，烏雲則會減速。</p>
           <button type="button" data-action="resume">繼續遊戲</button>
           <button type="button" data-action="restart">重新開始</button>
         </div>
@@ -150,7 +149,7 @@
       <div class="s4-result-panel" aria-hidden="true" aria-live="assertive">
         <div>
           <h2 data-result-title>工程完成！</h2>
-          <p data-result-copy>大家分工合作，中壢變得更乾淨了！</p>
+          <p data-result-copy>大家共同參與，中壢變得更乾淨了！</p>
           <button type="button" data-result-action="restart">重新挑戰</button>
           <button type="button" data-result-action="next">下一階段</button>
         </div>
@@ -291,7 +290,7 @@
         return;
       }
       if (roleAssignedToZone(role, zoneIndex)) {
-        guide.textContent = `${ROLE_DATA[role].label}已經在${ZONE_DATA[zoneIndex].title}工作了！`;
+        guide.textContent = `${ROLE_DATA[role].label}已經在${ZONE_DATA[zoneIndex].title}參與了！`;
         return;
       }
 
@@ -346,7 +345,7 @@
       zoneStates.forEach((zone, index) => {
         if (!zone.unlocked || zone.complete) return;
         const cloudMultiplier = zone.cloudUntil > elapsed ? 0.55 : 1;
-        const ecoMultiplier = roleAssignedToZone('eco', index) ? 1.5 : 1;
+        const ecoMultiplier = 1;
         const speed = cloudMultiplier * ecoMultiplier;
         if (roleAssignedToZone('traffic', index)) zone.traffic = Math.min(WORK_REQUIRED, zone.traffic + deltaSeconds * speed);
         if (roleAssignedToZone('worker', index)) zone.worker = Math.min(WORK_REQUIRED, zone.worker + deltaSeconds * speed);
@@ -377,7 +376,7 @@
       if (selectedRole) return;
       const cloudIndex = zoneStates.findIndex(zone => zone.cloudUntil > elapsed);
       if (cloudIndex >= 0) {
-        guide.textContent = `烏雲正在影響${ZONE_DATA[cloudIndex].title}；可派環保團體支援，或先調度其他區域。`;
+        guide.textContent = `烏雲正在影響${ZONE_DATA[cloudIndex].title}；可先調度工作人員至其他區域。`;
         return;
       }
       const nextLocked = zoneStates.findIndex(zone => !zone.unlocked);
@@ -409,7 +408,7 @@
         ['traffic', 'worker'].forEach(role => {
           const value = state[role];
           zoneElement.querySelector(`[data-progress="${role}"]`).style.width = `${value / WORK_REQUIRED * 100}%`;
-          zoneElement.querySelector(`[data-seconds="${role}"]`).textContent = `${Math.floor(value)}/30`;
+          zoneElement.querySelector(`[data-seconds="${role}"]`).textContent = `${Math.floor(value)}/15`;
         });
 
         const tokens = [];
@@ -490,8 +489,8 @@
       global.cancelAnimationFrame(frameId);
       resultPanel.querySelector('[data-result-title]').textContent = success ? '工程完成！' : '時間到！';
       resultPanel.querySelector('[data-result-copy]').textContent = success
-        ? '大家分工合作，中壢變得更乾淨了！'
-        : '重新安排人員，記得利用環保團體加速工程。';
+        ? '大家共同參與，中壢變得更乾淨了！'
+        : '重新安排交通義工與接管工人，邀請民眾共同參與。';
       resultPanel.querySelector('[data-result-action="next"]').hidden = !success;
       resultPanel.classList.add('is-visible');
       resultPanel.setAttribute('aria-hidden', 'false');

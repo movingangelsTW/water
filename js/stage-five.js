@@ -133,33 +133,33 @@
 
   function phasesMarkup() {
     return `
-      ${layer('Timeline_5/BG_Timeline.png', 's5-detail-bg s5-native-ratio', '污水下水道系統與中壢分期規劃')}
+      ${layer('Timeline_5/BG_Timeline_v2.png', 's5-detail-bg s5-native-ratio', '污水下水道系統與中壢分期規劃')}
       ${chromeMarkup()}
       ${layer('Timeline_5/ui1_Timeline.png', 's5-detail-title s5-phases-title-main s5-native-ratio')}
       ${layer('Timeline_5/ui1_Timeline.png', 's5-detail-title s5-phases-title-subtitle s5-native-ratio')}
       ${layer('Timeline_5/ui2_Timeline.png', 's5-detail-stage s5-native-ratio')}
       <span class="s5-talk-bubble s5-talk-bubble-left" aria-hidden="true"></span>
       <span class="s5-talk-bubble s5-talk-bubble-right" aria-hidden="true"></span>
-      ${layer('Timeline_5/people_Timeline.png', 's5-detail-people s5-person-left s5-native-ratio')}
-      ${layer('Timeline_5/people_Timeline.png', 's5-detail-people s5-person-right s5-native-ratio')}
-      ${layer('Search_5/talking_Search_v2.png', 's5-detail-speech s5-native-ratio')}
+      ${layer('Timeline_5/people_Timeline_v2.png', 's5-detail-people s5-person-left s5-native-ratio')}
+      ${layer('Timeline_5/people_Timeline_v2.png', 's5-detail-people s5-person-right s5-native-ratio')}
+      ${layer('Timeline_5/talking_Timeline_v2.png', 's5-detail-speech s5-native-ratio', '我們的計畫包含：污水收集、處理淨化、放流回歸自然。讓每一滴水都能乾淨再生，打造更美好的中壢。')}
       ${layer('Timeline_5/Timeline.gif', 's5-water-diagram s5-timeline-gif s5-native-ratio', '污水從住家接管、進入水資源回收中心處理並排入河川的動態示意圖')}
-      <p class="s5-phases-footer-caption">污水回收再利用，環境整潔而環保。</p>
+      <p class="s5-phases-footer-caption">污水回收再利用，環境整潔又環保。</p>
     `;
   }
 
   function scheduleMarkup() {
     return `
-      ${layer('Search_5/BG_Search.png', 's5-detail-bg s5-native-ratio', '工期時程與住家施工位置查詢')}
+      ${layer('Timeline_5/BG_Timeline_v2.png', 's5-detail-bg s5-native-ratio', '工期時程與住家施工位置查詢')}
       ${chromeMarkup()}
       ${layer('Search_5/ui1_Search.png', 's5-detail-title s5-schedule-title-main s5-native-ratio', '水利規劃介紹')}
       ${layer('Search_5/ui1_Search.png', 's5-detail-title s5-schedule-title-subtitle s5-native-ratio', '守護中壢地區環境未來')}
       ${layer('Search_5/ui2_Search.png', 's5-detail-stage s5-native-ratio')}
       <span class="s5-talk-bubble s5-talk-bubble-left" aria-hidden="true"></span>
       <span class="s5-talk-bubble s5-talk-bubble-right" aria-hidden="true"></span>
-      ${layer('Search_5/ZeandLittleWhite_Search.png', 's5-detail-people s5-person-left s5-native-ratio')}
-      ${layer('Search_5/ZeandLittleWhite_Search.png', 's5-detail-people s5-person-right s5-native-ratio')}
-      ${layer('Search_5/talking_Search_v2.png', 's5-detail-speech s5-native-ratio')}
+      ${layer('Timeline_5/people_Timeline_v2.png', 's5-detail-people s5-person-left s5-native-ratio')}
+      ${layer('Timeline_5/people_Timeline_v2.png', 's5-detail-people s5-person-right s5-native-ratio')}
+      ${layer('Timeline_5/talking_Timeline_v2.png', 's5-detail-speech s5-native-ratio', '我們的計畫包含：污水收集、處理淨化、放流回歸自然。讓每一滴水都能乾淨再生，打造更美好的中壢。')}
 
       <form class="s5-search-form" aria-label="施工區域查詢">
         <label for="s5-district">行政區</label>
