@@ -1,0 +1,189 @@
+/* =====================================================
+   Stage Two｜座標基準：階段2.jpg（2048 × 1365）
+   所有素材位置集中在 .stage-two 變數區。
+   ===================================================== */
+.stage-two {
+  z-index: 21;
+  background: #8fd2f4;
+  transition: opacity 0.45s ease;
+
+  /* 依參考圖校正：文字置於水滴右側、白色膠囊中央。 */
+  --stage2-count-x: 2.85%;
+  --stage2-count-y: 2.2%;
+  --stage2-title-x: 0%;
+  --stage2-title-y: 2%;
+  --stage2-subtitle-x: 0%;
+  --stage2-subtitle-y: 2%;
+
+  --drain-left: 3.2%;
+  --drain-top: 35.5%;
+  --drain-width: 27.5%;
+  --drain-height: 27%;
+
+  --river-left: 31.6%;
+  --river-top: 53.5%;
+  --river-width: 26.3%;
+  --river-height: 26%;
+
+  --firelane-left: 65.2%;
+  --firelane-top: 22.5%;
+  --firelane-width: 26.5%;
+  --firelane-height: 26.5%;
+
+  --pipe-left: 59.8%;
+  --pipe-top: 53.8%;
+  --pipe-width: 26.2%;
+  --pipe-height: 25.5%;
+}
+
+.stage-two-ui-layer,
+.stage-two-info-layer,
+.stage-two-hotspot-layer,
+.stage-two-overlay-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.stage-two-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../assets/stage2-background.png") center / 100% 100% no-repeat;
+  opacity: 0;
+}
+
+.stage-two-ui-layer { z-index: 10; }
+.stage-two-frame-ui,
+.stage-two-count-ui,
+.stage-two-title-main-ui,
+.stage-two-subtitle-ui {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  opacity: 0;
+}
+.stage-two-count-ui { transform: translate(var(--stage2-count-x), var(--stage2-count-y)); }
+.stage-two-title-main-ui {
+  clip-path: polygon(0 1.5%, 100% 1.5%, 100% 8.5%, 0 8.5%);
+  transform: translate(var(--stage2-title-x), var(--stage2-title-y));
+}
+.stage-two-subtitle-ui {
+  clip-path: polygon(0 9.5%, 100% 9.5%, 100% 14.5%, 0 14.5%);
+  transform: translate(var(--stage2-subtitle-x), var(--stage2-subtitle-y));
+}
+
+.stage-two-sound-button,
+.stage-two-back-button,
+.stage-two-next-button {
+  position: absolute;
+  z-index: 4;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+  opacity: 0;
+}
+.stage-two-sound-button { right: 5%; top: 5%; width: 5.5%; }
+.stage-two-back-button { left: 7%; bottom: 7%; width: 8.7%; }
+.stage-two-next-button { right: 5%; bottom: 8%; width: 17.6%; }
+.stage-two-sound-button img,
+.stage-two-back-button img,
+.stage-two-next-button img { display: block; width: 100%; }
+.stage-two-sound-button.is-muted { filter: grayscale(1); opacity: 0.55 !important; }
+.stage-two-sound-button:hover,
+.stage-two-back-button:hover,
+.stage-two-next-button:hover { filter: brightness(1.12); transform: scale(1.04); }
+
+/* icon3～6 為完整畫布素材，維持 100% 對位。 */
+.stage-two-info-layer { z-index: 7; }
+.stage-two-info {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  opacity: 0;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  transform: scale(0.97);
+}
+.stage-two-info.is-visible { opacity: 1; transform: none; }
+
+/* Stage Two 的人物介紹圖層出現後持續自然小幅擺動。 */
+.stage-two.characters-swaying .stage-two-info.is-visible {
+  animation: stageTwoPersonSway 3.6s ease-in-out infinite alternate;
+  transform-origin: 50% 96%;
+}
+
+.stage-two-hotspot-layer { z-index: 8; }
+.stage-two-hotspot {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: clamp(2px, 0.24vw, 5px) solid currentColor;
+  border-radius: 2.2vw;
+  background: rgba(255,255,255,0.08);
+  color: #39b83e;
+  cursor: pointer;
+  pointer-events: auto;
+  opacity: 0;
+  transition: filter 0.2s ease, background 0.2s ease;
+}
+.stage-two-hotspot:hover { background: rgba(255,255,255,0.2); filter: brightness(1.1); }
+.stage-two-hotspot img { width: 18%; min-width: 34px; animation: stageTwoTouch 1s ease-in-out infinite alternate; }
+.stage-two-hotspot.is-open { border-color: transparent; background: transparent; }
+.stage-two-hotspot.is-open img { opacity: 0; }
+.hotspot-drain { left: var(--drain-left); top: var(--drain-top); width: var(--drain-width); height: var(--drain-height); }
+.hotspot-river { left: var(--river-left); top: var(--river-top); width: var(--river-width); height: var(--river-height); color: #1264d7; }
+.hotspot-firelane { left: var(--firelane-left); top: var(--firelane-top); width: var(--firelane-width); height: var(--firelane-height); color: #7926db; }
+.hotspot-pipe { left: var(--pipe-left); top: var(--pipe-top); width: var(--pipe-width); height: var(--pipe-height); color: #efa91e; }
+
+.stage-two-overlay-layer { z-index: 20; }
+.stage-two-caption {
+  position: absolute;
+  left: 17%;
+  bottom: 12.1%;
+  width: 66%;
+  min-height: 1.6em;
+  margin: 0;
+  color: #0873c9;
+  font-size: clamp(14px, 2vw, 40px);
+  font-weight: 900;
+  line-height: 1.35;
+  letter-spacing: 0.04em;
+  text-align: center;
+  text-shadow: 0 0.05em 0 #fff;
+  opacity: 0;
+  z-index: 100;
+}
+.stage-two-caption::after { content: ""; display: inline-block; width: .08em; height: 1em; margin-left: .12em; vertical-align: -.12em; background: currentColor; animation: typingCursor .7s steps(1) infinite; }
+.stage-two-caption.is-finished::after { display: none; }
+.stage-two-dots { position: absolute; left: 50%; bottom: 4.7%; display: flex; gap: 1.7vw; translate: -50% 0; opacity: 0; z-index: 100; }
+.stage-two-dot { display: block; width: clamp(14px,2.2vw,44px); aspect-ratio: 1; border-radius: 50%; background: #9aacc1; box-shadow: inset 0 0 0 .08em rgba(255,255,255,.4); }
+.stage-two-dot.is-current { background: #46a9ff; }
+
+.stage-two.show-bg .stage-two-background { animation: backgroundIn .7s ease both; }
+.stage-two.show-bg .stage-two-frame-ui,
+.stage-two.show-bg .stage-two-count-ui,
+.stage-two.show-bg .stage-two-title-main-ui,
+.stage-two.show-bg .stage-two-subtitle-ui { animation: fadeIn .55s .25s ease both; }
+.stage-two.show-bg .stage-two-sound-button { animation: fadeIn .4s .4s ease both; }
+.stage-two.show-content .stage-two-hotspot { animation: bubbleIn .48s ease both; }
+.stage-two.show-content .hotspot-river { animation-delay: .1s; }
+.stage-two.show-content .hotspot-firelane { animation-delay: .2s; }
+.stage-two.show-content .hotspot-pipe { animation-delay: .3s; }
+.stage-two.show-content .stage-two-caption,
+.stage-two.show-content .stage-two-dots,
+.stage-two.show-content .stage-two-back-button,
+.stage-two.show-content .stage-two-next-button { animation: fadeIn .4s .2s ease both; }
+
+@keyframes stageTwoTouch { from { transform: translateY(5%) scale(.94); } to { transform: translateY(-5%) scale(1.05); } }
+@keyframes stageTwoPersonSway {
+  from { opacity: 1; transform: translateX(-0.16%) rotate(-0.18deg); }
+  to { opacity: 1; transform: translateX(0.16%) rotate(0.18deg); }
+}

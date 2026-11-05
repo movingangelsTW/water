@@ -1,0 +1,487 @@
+/* =====================================================
+   Stage One 共用畫面
+   座標基準：階段一_v2.jpg（2048 × 1365）
+   素材位置可直接修改各區塊的 POSITION 參數。
+   ===================================================== */
+
+.stage-one {
+  z-index: 20;
+  background: #b8def1;
+  transition: opacity 0.45s ease;
+
+  /* 階段文字｜stage1-count-ui.png */
+  --stage-count-x: 2.85%;
+  --stage-count-y: 2.2%;
+
+  /* 主標題＋副標題｜stage1-title-ui.png */
+  --stage-title-main-x: 0%;
+  --stage-title-subtitle-x: 0%;
+  --stage-title-y: 2%;
+
+  /* LittleWhite_01.png｜河中捕魚 */
+  --bird-clean-left: 24.2%;
+  --bird-clean-bottom: 19.2%;
+  --bird-clean-width: 18.5%;
+
+  /* LittleWhiteTalking1_01.png｜左上方說話 */
+  --bird-talking-left: -2.1%;
+  --bird-talking-top: 15%;
+  --bird-talking-width: 22.5%;
+
+  /* LittleWhiteTalking2_01.png｜右上方難過 */
+  --bird-sad-right: 30%;
+  --bird-sad-top: 17%;
+  --bird-sad-width: 22.5%;
+}
+
+.stage-ui-layer,
+.npc-layer,
+.littlewhite-layer,
+.dialogue-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* =====================================================
+   BACKGROUND｜GB3_01.png 單一完整背景
+   POSITION：inset / width / height
+   ===================================================== */
+
+.stage-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../assets/stage1-background.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+}
+
+/* =====================================================
+   UI FRAME｜上下藍色介面框
+   ===================================================== */
+
+.stage-ui-layer {
+  z-index: 10;
+}
+
+.frame-ui {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  opacity: 0;
+}
+
+/* =====================================================
+   UI TEXT｜階段文字與標題分開控制
+   ===================================================== */
+
+.stage-count-ui,
+.stage-title-ui {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  opacity: 0;
+
+}
+
+/* 階段 1/9｜向右增加 X、向下增加 Y */
+.stage-count-ui {
+  transform: translate(var(--stage-count-x), var(--stage-count-y));
+}
+
+/* 主標題＋副標題｜向右增加 X、向下增加 Y */
+.stage-title-main {
+  clip-path: inset(0 0 89% 0);
+  transform: translate(var(--stage-title-main-x), var(--stage-title-y));
+}
+
+.stage-title-subtitle {
+  clip-path: inset(9% 0 82% 0);
+  transform: translate(var(--stage-title-subtitle-x), var(--stage-title-y));
+}
+
+/* =====================================================
+   SOUND UI｜音效按鈕
+   POSITION：right / top / width
+   ===================================================== */
+
+.sound-button {
+  position: absolute;
+  right: 5%;
+  top: 5%;
+  width: 5.5%;
+  z-index: 3;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+  opacity: 0;
+}
+
+/* =====================================================
+   PREVIOUS UI｜返回按鈕
+   POSITION：left / bottom / width
+   ===================================================== */
+
+.back-button {
+  position: absolute;
+  left: 7%;
+  bottom: 7%;
+  width: 8.7%;
+  z-index: 3;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+  opacity: 0;
+}
+
+/* =====================================================
+   NEXT UI｜下一階段按鈕
+   POSITION：right / bottom / width
+   ===================================================== */
+
+.next-button {
+  position: absolute;
+  right: 5%;
+  bottom: 8%;
+  width: 17.6%;
+  z-index: 3;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+  opacity: 0;
+}
+
+.sound-button img,
+.back-button img,
+.next-button img {
+  display: block;
+  width: 100%;
+}
+
+.sound-button.is-muted {
+  filter: grayscale(1);
+  opacity: 0.55 !important;
+}
+
+.sound-button:hover,
+.back-button:hover,
+.next-button:hover {
+  filter: brightness(1.12);
+  transform: scale(1.04);
+}
+
+/* =====================================================
+   NPC LAYER
+   ===================================================== */
+
+.npc-layer {
+  z-index: 5;
+}
+
+.npc-layer img {
+  position: absolute;
+  object-fit: contain;
+  opacity: 0;
+}
+
+/* NPC 01｜乾淨環境中的一家人
+   POSITION：left / bottom / width */
+.npc-clean {
+  left: 7.2%;
+  bottom: 30.2%;
+  width: 18%;
+}
+
+/* NPC 02｜受污染影響的居民
+   POSITION：right / bottom / width */
+.npc-polluted {
+  right: -1%;
+  bottom: 23.5%;
+  width: 30%;
+}
+
+/* =====================================================
+   LITTLE WHITE LAYER
+   ===================================================== */
+
+.littlewhite-layer {
+  z-index: 6;
+}
+
+.littlewhite-layer img {
+  position: absolute;
+  object-fit: contain;
+  opacity: 0;
+}
+
+/* LittleWhite_01.png｜河中捕魚
+   已改用本次重新上傳的透明背景素材
+   POSITION：left / bottom / width */
+.bird-clean {
+  left: var(--bird-clean-left);
+  bottom: var(--bird-clean-bottom);
+  width: var(--bird-clean-width);
+}
+
+/* LittleWhiteTalking1_01.png｜左上方說話
+   POSITION：left / top / width */
+.bird-talking {
+  left: var(--bird-talking-left);
+  top: var(--bird-talking-top);
+  width: var(--bird-talking-width);
+}
+
+/* LittleWhiteTalking2_01.png｜右上方難過
+   POSITION：right / top / width */
+.bird-sad {
+  right: var(--bird-sad-right);
+  top: var(--bird-sad-top);
+  width: var(--bird-sad-width);
+}
+
+/* =====================================================
+   DIALOGUE｜talking_01 左右對話框
+   ===================================================== */
+
+.dialogue-layer {
+  /* 高於 stage-ui-layer，讓下方文字與圓點位於最上層 */
+  z-index: 20;
+}
+
+.dialogues {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  opacity: 0;
+  z-index: 1;
+}
+
+/* =====================================================
+   BOTTOM TEXT｜以 JavaScript 逐字顯示
+   POSITION：left / bottom / width
+   ===================================================== */
+
+.stage-caption {
+  position: absolute;
+  left: 17%;
+  bottom: 12.1%;
+  width: 66%;
+  min-height: 1.6em;
+  margin: 0;
+  color: #0873c9;
+  font-size: clamp(11px, 1.55vw, 31px);
+  font-weight: 900;
+  line-height: 1.35;
+  letter-spacing: 0.04em;
+  text-align: center;
+  text-shadow: 0 0.05em 0 #ffffff;
+  white-space: nowrap;
+  opacity: 0;
+  z-index: 100;
+}
+
+.stage-caption::after {
+  content: "";
+  display: inline-block;
+  width: 0.08em;
+  height: 1em;
+  margin-left: 0.12em;
+  vertical-align: -0.12em;
+  background: currentColor;
+  animation: typingCursor 0.7s steps(1) infinite;
+}
+
+.stage-caption.is-finished::after {
+  display: none;
+}
+
+/* =====================================================
+   STAGE DOTS｜CSS 生成三個階段圓點
+   POSITION：left / bottom
+   ===================================================== */
+
+.stage-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 4.7%;
+  display: flex;
+  gap: 1.7vw;
+  translate: -50% 0;
+  opacity: 0;
+  z-index: 100;
+}
+
+.stage-dot {
+  display: block;
+  width: clamp(14px, 2.2vw, 44px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #9aacc1;
+  box-shadow: inset 0 0 0 0.08em rgba(255, 255, 255, 0.4);
+}
+
+.stage-dot.is-current {
+  background: #46a9ff;
+}
+
+/* =====================================================
+   四段入場控制
+   BG + UI → NPC → LittleWhite → 對話框與底部資訊
+   ===================================================== */
+
+.stage-one.show-bg .stage-background {
+  animation: backgroundIn 0.7s ease both;
+}
+
+.stage-one.show-bg .frame-ui,
+.stage-one.show-bg .stage-count-ui,
+.stage-one.show-bg .stage-title-ui {
+  animation: fadeIn 0.55s 0.25s ease both;
+}
+
+.stage-one.show-bg .sound-button {
+  animation: fadeIn 0.4s 0.4s ease both;
+}
+
+.stage-one.show-npc .npc-clean {
+  animation: fromLeft 0.7s ease both;
+}
+
+.stage-one.show-npc .npc-polluted {
+  animation: fromRight 0.7s 0.12s ease both;
+}
+
+.stage-one.show-bird .bird-clean,
+.stage-one.show-bird .bird-talking,
+.stage-one.show-bird .bird-sad {
+  animation: birdIn 0.65s ease both;
+}
+
+.stage-one.show-bird .bird-talking {
+  animation-delay: 0.1s;
+}
+
+.stage-one.show-bird .bird-sad {
+  animation-delay: 0.2s;
+}
+
+.stage-one.show-dialogue .dialogues {
+  animation: bubbleIn 0.5s ease both;
+}
+
+.stage-one.show-dialogue .stage-caption,
+.stage-one.show-dialogue .stage-dots,
+.stage-one.show-dialogue .back-button,
+.stage-one.show-dialogue .next-button {
+  animation: fadeIn 0.4s 0.25s ease both;
+}
+
+/* 所有人物完成入場後，持續小幅度自然左右擺動。 */
+.stage-one.characters-swaying .npc-clean {
+  animation: stageOnePersonSwayA 3.5s ease-in-out infinite alternate;
+  /*
+   * 入場動畫切換成擺動動畫時，人物必須沿用已完成的可見狀態。
+   * 明確指定 opacity 與 fill-mode，避免 animation shorthand 重設
+   * fill-mode 後，在擺動動畫延遲期間短暫退回基礎 opacity: 0。
+   */
+  opacity: 1;
+  animation-fill-mode: both;
+  transform-origin: 50% 100%;
+}
+
+.stage-one.characters-swaying .npc-polluted {
+  animation: stageOnePersonSwayB 3.9s .2s ease-in-out infinite alternate;
+  opacity: 1;
+  animation-fill-mode: both;
+  transform-origin: 50% 100%;
+}
+
+.stage-one.characters-swaying .bird-clean {
+  animation: stageOneBirdSwayA 3.2s .1s ease-in-out infinite alternate;
+  opacity: 1;
+  animation-fill-mode: both;
+  transform-origin: 50% 94%;
+}
+
+.stage-one.characters-swaying .bird-talking {
+  animation: stageOneBirdSwayB 3.6s .28s ease-in-out infinite alternate;
+  opacity: 1;
+  animation-fill-mode: both;
+  transform-origin: 50% 92%;
+}
+
+.stage-one.characters-swaying .bird-sad {
+  animation: stageOneBirdSwayA 3.8s .42s ease-in-out infinite alternate-reverse;
+  opacity: 1;
+  animation-fill-mode: both;
+  transform-origin: 50% 92%;
+}
+
+@keyframes backgroundIn {
+  from { opacity: 0; filter: blur(8px); transform: scale(1.035); }
+  to { opacity: 1; filter: none; transform: none; }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes fromLeft {
+  from { opacity: 0; transform: translateX(-18%); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes fromRight {
+  from { opacity: 0; transform: translateX(18%); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes birdIn {
+  from { opacity: 0; transform: translateY(13%) scale(0.88); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes bubbleIn {
+  from { opacity: 0; transform: scale(0.88); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes typingCursor {
+  50% { opacity: 0; }
+}
+
+@keyframes stageOnePersonSwayA {
+  from { opacity: 1; transform: translateX(-0.35%) rotate(-0.45deg); }
+  to { opacity: 1; transform: translateX(0.35%) rotate(0.45deg); }
+}
+
+@keyframes stageOnePersonSwayB {
+  from { opacity: 1; transform: translateX(0.28%) rotate(0.38deg); }
+  to { opacity: 1; transform: translateX(-0.28%) rotate(-0.38deg); }
+}
+
+@keyframes stageOneBirdSwayA {
+  from { opacity: 1; transform: translateX(-0.45%) rotate(-0.55deg); }
+  to { opacity: 1; transform: translateX(0.45%) rotate(0.55deg); }
+}
+
+@keyframes stageOneBirdSwayB {
+  from { opacity: 1; transform: translateX(0.4%) rotate(0.48deg); }
+  to { opacity: 1; transform: translateX(-0.4%) rotate(-0.48deg); }
+}

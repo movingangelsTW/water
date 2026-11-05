@@ -1,0 +1,131 @@
+.home-screen {
+  z-index: 1;
+  background: url("../assets/background.png") center / cover no-repeat;
+  transition: opacity .4s;
+}
+
+.home-screen img {
+  position: absolute;
+  user-select: none;
+  pointer-events: none;
+}
+
+.home-title {
+  z-index: 3;
+  top: 5.5%;
+  left: 50%;
+  width: 49.5%;
+  translate: -50%;
+  animation: titleIn .8s both;
+}
+
+.home-bird {
+  z-index: 2;
+  left: -6.4%;
+  bottom: -24.8%;
+  width: 50.5%;
+  transform-origin: 48% 92%;
+  animation: leftIn .9s .15s both, homeBirdSway 3.5s 1.15s ease-in-out infinite alternate;
+}
+
+.home-worker {
+  z-index: 2;
+  right: -1%;
+  bottom: -30.7%;
+  width: 40.2%;
+  transform-origin: 52% 94%;
+  animation: rightIn .9s .25s both, homeWorkerSway 3.9s 1.25s ease-in-out infinite alternate;
+}
+
+.start-button {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  bottom: 14.2%;
+  width: 23.4%;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  translate: -50%;
+  cursor: pointer;
+  animation: buttonIn .7s .55s both, pulse 2.2s 1.4s infinite;
+}
+
+.start-button img {
+  display: block;
+  position: static;
+  width: 100%;
+}
+
+.start-button:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 1vh #fff36f);
+}
+
+.start-button:active { transform: scale(.96); }
+
+.home-link-button {
+  position: absolute;
+  z-index: 6;
+  top: 2.1%;
+  width: 12.16%;
+  padding: 0;
+  overflow: hidden;
+  border: .3vh solid rgba(126, 221, 255, .95);
+  border-radius: 1.7vh;
+  background: #0758bc;
+  box-shadow: 0 .55vh 1.4vh rgba(0, 39, 104, .42), inset 0 0 .45vh rgba(255, 255, 255, .55);
+  cursor: pointer;
+  animation: buttonIn .7s .72s both;
+  transition: transform .16s ease, filter .16s ease;
+}
+
+.home-official-button { left: .7%; }
+.home-video-button { left: 12.95%; }
+
+.home-link-button img {
+  display: block;
+  position: static;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+.home-link-button:hover,
+.home-link-button:focus-visible {
+  transform: translateY(-.35vh) scale(1.035);
+  filter: brightness(1.1) drop-shadow(0 0 .75vh #fff36f);
+}
+
+.home-link-button:active { transform: scale(.97); }
+
+@keyframes titleIn {
+  from { opacity: 0; transform: translateY(-20%) scale(.85); }
+}
+
+@keyframes leftIn {
+  from { opacity: 0; transform: translateX(-18%); }
+}
+
+@keyframes rightIn {
+  from { opacity: 0; transform: translateX(18%); }
+}
+
+@keyframes buttonIn {
+  from { opacity: 0; transform: translateY(40%) scale(.7); }
+}
+
+@keyframes pulse {
+  50% { transform: scale(1.025); filter: drop-shadow(0 0 .8vh #fff45d); }
+}
+
+@keyframes homeBirdSway {
+  from { transform: translateX(-.45%) rotate(-.45deg); }
+  to { transform: translateX(.45%) rotate(.45deg); }
+}
+
+@keyframes homeWorkerSway {
+  from { transform: translateX(.38%) rotate(.35deg); }
+  to { transform: translateX(-.38%) rotate(-.35deg); }
+}

@@ -1,0 +1,304 @@
+.stage-six {
+  z-index: 26;
+  overflow: hidden;
+  color: #073b91;
+  background: #122a3a;
+  font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  transition: opacity .4s ease;
+}
+
+.s6-view,
+.s6-chrome,
+.s6-npc-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.s6-layer {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  user-select: none;
+  pointer-events: none;
+}
+
+.s6-background { z-index: 0; }
+.s6-chrome { z-index: 1; pointer-events: none; }
+.s6-title,
+.s6-stage-count { z-index: 2; }
+.s6-stage-count { transform: translate(2.85%, 2.2%); }
+.s6-title-main {
+  clip-path: inset(0 0 90.2% 0);
+  transform: translateY(2.8%);
+}
+.s6-title-subtitle {
+  clip-path: inset(9.2% 0 83.2% 0);
+  transform-origin: 50% 12%;
+  transform: translateY(1.55%) scale(.94);
+}
+.s6-littlewhite,
+.s6-dialogue-bubble,
+.s6-talking,
+.s6-notice { z-index: 3; }
+.s6-npc-layer { z-index: 4; pointer-events: none; }
+
+.s6-topbar {
+  position: absolute;
+  left: 1.15%;
+  right: 1.15%;
+  top: .6%;
+  height: 12.3%;
+  border: .28vh solid rgba(117,210,255,.95);
+  border-radius: 3vh;
+  background: linear-gradient(180deg,#0a42a5 0%,#063184 100%);
+  box-shadow: 0 .55vh 1.5vh rgba(2,49,126,.24), inset 0 .25vh .7vh rgba(255,255,255,.2);
+}
+
+.s6-topbar::after {
+  content: "";
+  position: absolute;
+  left: 33.8%;
+  bottom: -1.1vh;
+  width: 32.4%;
+  height: 4.35vh;
+  border: .22vh solid rgba(105,196,247,.92);
+  border-radius: 999px;
+  background: linear-gradient(180deg,rgba(255,255,255,.98),rgba(220,244,255,.98));
+  box-shadow: 0 .35vh .8vh rgba(0,58,135,.18);
+}
+
+.s6-stage-pill {
+  position: absolute;
+  left: 4.3%;
+  top: 2.7%;
+  width: 17.5%;
+  height: 7.65%;
+  border: .25vh solid #70cfff;
+  border-radius: 999px;
+  background: linear-gradient(180deg,#fff 0%,#e8f6ff 100%);
+  box-shadow: 0 .4vh 1vh rgba(0,52,137,.22);
+}
+
+.s6-stage-drop {
+  position: absolute;
+  left: -10%;
+  top: -21%;
+  width: 37%;
+  height: 142%;
+  overflow: visible;
+  filter: drop-shadow(0 .4vh 0 #0870cc) drop-shadow(0 .7vh .8vh rgba(2,55,130,.22));
+}
+.s6-stage-drop-shadow { fill:#0b76dc; stroke:#d8f7ff; stroke-width:6; stroke-linejoin:round; }
+.s6-stage-drop-body { fill:#55c5f7; stroke:#1d9aed; stroke-width:3; }
+.s6-stage-drop-glint { fill:none; stroke:rgba(255,255,255,.9); stroke-width:8; stroke-linecap:round; }
+
+.s6-footerbar {
+  position: absolute;
+  left: .65%;
+  right: .65%;
+  bottom: .65%;
+  height: 18.2%;
+  border: .3vh solid rgba(95,188,255,.95);
+  border-radius: 2.8vh;
+  background: linear-gradient(180deg,rgba(255,255,255,.98),rgba(220,242,255,.98));
+  box-shadow: 0 -.25vh 1.3vh rgba(0,61,145,.18), inset 0 -.25vh .55vh rgba(30,127,225,.1);
+}
+
+.s6-dialogue-bubble {
+  position: absolute;
+  left: 17.8%;
+  top: 16.3%;
+  width: 31.7%;
+  height: 15.3%;
+  border: .3vh solid rgba(255,255,255,.9);
+  border-radius: 2.8vh;
+  background: rgba(255,255,255,.86);
+  box-shadow: 0 .55vh 1.4vh rgba(13,83,144,.12);
+  pointer-events: none;
+}
+
+/* 對話文字與泡泡一起下移，與頂端標題框保留清楚間距。 */
+.s6-talking { transform: translateY(1.1%); }
+
+.s6-npc {
+  opacity: 0;
+  transform: translateY(1.6%) scale(.98);
+  transition: opacity .38s ease, transform .38s cubic-bezier(.2,.9,.24,1.18);
+}
+.s6-npc.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+
+.s6-touch-target,
+.s6-back,
+.s6-next,
+.s6-sound,
+.s6-photo-close,
+.s6-photo-surface {
+  position: absolute;
+  z-index: 10;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.s6-touch-target {
+  width: 7.5%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: drop-shadow(0 .55vh .7vh rgba(0,28,108,.28));
+  animation: s6TouchPulse 1.25s ease-in-out infinite alternate;
+}
+.s6-touch-target[hidden] { display: none; }
+.s6-touch-target[data-position="upper-right"] { left: 85%; top: 19%; }
+.s6-touch-target[data-position="lower-left"] { left: 12.5%; top: 56%; }
+.s6-touch-target[data-position="lower-center-left"] { left: 40.3%; top: 63%; }
+.s6-touch-target[data-position="lower-center-right"] { left: 59%; top: 62%; }
+.s6-touch-target[data-position="lower-right"] { left: 76%; top: 57%; }
+.s6-touch-target img { display:block; width:100%; height:100%; object-fit:contain; }
+.s6-touch-target span {
+  position: absolute;
+  left: 50%;
+  top: 94%;
+  min-width: max-content;
+  padding: .18em .65em;
+  border-radius: 999px;
+  color: #073b91;
+  background: rgba(255,255,255,.94);
+  box-shadow: 0 .25vh .7vh rgba(0,46,115,.2);
+  font-size: clamp(9px,.76vw,15px);
+  font-weight: 900;
+  transform: translateX(-50%);
+}
+
+.s6-back { left: 3.2%; bottom: 3%; width: 8%; }
+.s6-next { right: 3%; bottom: 5.2%; width: 17.4%; opacity: .58; filter: grayscale(.58); cursor: pointer; transition: opacity .25s ease, filter .25s ease, transform .18s ease; }
+.s6-next.is-unlocked { opacity: 1; filter: none; cursor: pointer; animation: s6NextReady 1s ease-in-out 2; }
+.s6-next.is-skip-pressed { animation: s6SkipPress .22s ease; }
+.s6-sound { right: 3.1%; top: 3%; width: 5.2%; }
+.s6-back img,
+.s6-next img,
+.s6-sound img { display:block; width:100%; height:auto; object-fit:contain; }
+.s6-back:hover,
+.s6-next.is-unlocked:hover,
+.s6-sound:hover { filter: brightness(1.1); transform: scale(1.04); }
+.s6-sound.is-muted { filter: grayscale(1); opacity:.55; }
+
+.s6-footer-caption {
+  position: absolute;
+  z-index: 6;
+  left: 12%;
+  right: 20.8%;
+  bottom: 10.7%;
+  margin: 0;
+  color: #0870cf;
+  font-size: clamp(14px,1.72vw,34px);
+  font-weight: 900;
+  line-height: 1.15;
+  text-align: center;
+  letter-spacing: .035em;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.s6-page-dots {
+  position: absolute;
+  z-index: 6;
+  left: 50%;
+  bottom: 4.1%;
+  display: flex;
+  gap: 2.2vw;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.s6-page-dots i { width:clamp(14px,1.7vw,34px); aspect-ratio:1; border-radius:50%; background:#9eb2ce; }
+.s6-page-dots i.is-current { background:#3399f4; }
+
+.s6-photo-modal {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 3%;
+  background: rgba(0,25,64,.76);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+.s6-photo-modal.is-visible { opacity:1; visibility:visible; pointer-events:auto; }
+.s6-photo-dialog {
+  position: relative;
+  width: min(82%, calc(74vh * 1.5));
+  aspect-ratio: 3/2;
+  padding: 0;
+  border: .35vh solid #d7f1ff;
+  border-radius: 2.2vh;
+  background: #fff;
+  box-shadow: 0 2vh 6vh rgba(0,0,0,.4);
+  overflow: visible;
+}
+.s6-photo-dialog h2 { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+.s6-photo-surface { position:absolute; inset:0; z-index:1; width:100%; height:100%; border-radius:1.75vh; overflow:hidden; }
+.s6-photo-surface img { display:block; width:100%; height:100%; object-fit:contain; object-position:center; background:#fff; }
+.s6-photo-close {
+  right: -1.35vh;
+  top: -1.35vh;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 4.3vh;
+  height: 4.3vh;
+  border: .28vh solid #fff;
+  border-radius: 50%;
+  color: #fff;
+  background: #0757b6;
+  box-shadow: 0 .35vh 1vh rgba(0,0,0,.3);
+  font-size: 3.1vh;
+  font-weight: 900;
+  line-height: 1;
+}
+.s6-photo-dialog > p {
+  position: absolute;
+  left: 50%;
+  bottom: -3.1vh;
+  min-width: max-content;
+  margin: 0;
+  padding: .25em .9em;
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(4,46,107,.92);
+  font-size: clamp(8px,.75vw,15px);
+  font-weight: 800;
+  transform: translateX(-50%);
+}
+
+.stage-six.is-entering .s6-view { animation: s6Enter .55s ease both; }
+@keyframes s6Enter { from { opacity:0; transform:scale(1.012); } to { opacity:1; transform:scale(1); } }
+@keyframes s6TouchPulse { from { transform:scale(.92); } to { transform:scale(1.09); } }
+@keyframes s6NextReady { 50% { transform:scale(1.06); filter:brightness(1.12); } }
+@keyframes s6SkipPress { 50% { transform:scale(.94); filter:brightness(1.08) grayscale(.35); } }
+
+.s6-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .s6-touch-target,
+  .s6-next.is-unlocked,
+  .s6-next.is-skip-pressed { animation:none; }
+}
