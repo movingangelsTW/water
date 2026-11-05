@@ -1,0 +1,77 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>中壢污水大作戰</title><link rel="icon" href="data:,"><link rel="stylesheet" href="css/base.css"><link rel="stylesheet" href="css/home.css"><link rel="stylesheet" href="css/stage-one.css"><link rel="stylesheet" href="css/stage-two.css"><link rel="stylesheet" href="css/stage-three.css"><link rel="stylesheet" href="css/stage-four.css"><link rel="stylesheet" href="css/stage-five.css"><link rel="stylesheet" href="css/stage-six.css"><link rel="stylesheet" href="css/stage-seven.css"><link rel="stylesheet" href="css/stage-eight.css"><link rel="stylesheet" href="css/stage-nine.css"><link rel="stylesheet" href="css/stage-ten.css"><link rel="stylesheet" href="css/common-stage-ui.css"></head><body><main class="game-shell"><div class="scene" id="scene">
+<section class="home-screen screen is-active" id="homeScreen" aria-label="遊戲首頁"><img class="home-title" src="assets/title.png" alt="中壢污水大作戰"><img class="home-bird" src="assets/little-white.png" alt="小白"><img class="home-worker" src="assets/aze.png" alt="阿澤"><button class="start-button" id="startButton" type="button"><img src="assets/start-button.png" alt="開始遊戲"></button></section>
+<div class="loading-screen" id="loadingScreen" aria-hidden="true"><i class="water-drop"></i><p>準備進入任務！</p></div>
+<section class="stage-one screen" id="stageOne" aria-label="階段一：中壢的過去與現在" aria-hidden="true"><div class="stage-background"></div>
+<div class="stage-ui-layer"><img class="frame-ui" src="assets/common/all_ui.png" alt=""><img class="stage-count-ui" src="assets/stage1-title-ui.png" alt="階段 1/9"><img class="stage-title-ui stage-title-main" src="assets/stage1-count-ui.png" alt="中壢的過去與現在"><img class="stage-title-ui stage-title-subtitle" src="assets/stage1-count-ui.png" alt="找回乾淨的家園"><button class="sound-button" type="button" aria-label="切換音效" aria-pressed="true"><img src="assets/common/sound_ui.png" alt="音效"></button><button class="back-button" type="button" aria-label="返回首頁"><img src="assets/common/previous_ui.png" alt="返回"></button><button class="next-button" type="button" aria-label="進入下一階段"><img src="assets/common/next_ui.png" alt="下一階段"></button></div>
+<div class="npc-layer"><img class="npc-clean" src="assets/stage1-npc-clean.png" alt="過去在河畔散步的一家人"><img class="npc-polluted" src="assets/stage1-npc-polluted.png" alt="受污染影響的居民"></div>
+<div class="littlewhite-layer"><img class="bird-clean" src="assets/stage1-littlewhite.png" alt="捕魚的小白"><img class="bird-talking" src="assets/stage1-littlewhite-talking.png" alt="回憶過去的小白"><img class="bird-sad" src="assets/stage1-littlewhite-sad.png" alt="難過的小白"></div>
+<div class="dialogue-layer">
+  <img class="dialogues" src="assets/stage1-dialogues.png" alt="以前，這裡不是這樣的……最近，大家好像越來越不開心了">
+  <p class="stage-caption" id="stageCaption" data-text="小白看著家園的變化，讓我們一起幫助中壢變乾淨！" aria-live="polite"></p>
+</div></section>
+<section class="stage-two screen" id="stageTwo" aria-label="階段二：了解污染來源" aria-hidden="true">
+  <div class="stage-two-background"></div>
+  <div class="stage-two-ui-layer">
+    <img class="stage-two-frame-ui" src="assets/common/all_ui.png" alt="">
+    <img class="stage-two-count-ui" src="assets/stage2-count-ui.png" alt="階段 2/9">
+    <img class="stage-two-title-main-ui" src="assets/stage2-title-ui.png" alt="了解污染來源">
+    <img class="stage-two-subtitle-ui" src="assets/stage2-title-ui.png" alt="點擊畫面中區域">
+    <button class="stage-two-sound-button" type="button" aria-label="切換音效" aria-pressed="true"><img src="assets/common/sound_ui.png" alt="音效"></button>
+    <button class="stage-two-back-button" type="button" aria-label="返回階段一"><img src="assets/common/previous_ui.png" alt="返回"></button>
+    <button class="stage-two-next-button" type="button" aria-label="進入下一階段"><img src="assets/common/next_ui.png" alt="下一階段"></button>
+  </div>
+  <div class="stage-two-info-layer" aria-live="polite">
+    <img class="stage-two-info info-drain" data-info="drain" src="assets/stage2-drain-info.png" alt="排水溝：最近變很臭，味道很難聞。">
+    <img class="stage-two-info info-river" data-info="river" src="assets/stage2-river-info.png" alt="河川：河面上有泡沫，似乎是污水污染。">
+    <img class="stage-two-info info-firelane" data-info="firelane" src="assets/stage2-firelane-info.png" alt="防火巷：受加蓋影響，防火巷堆積雜物。">
+    <img class="stage-two-info info-pipe" data-info="pipe" src="assets/stage2-pipe-info.png" alt="老舊管線：最近家裡常常排水不順，還會堵塞。">
+  </div>
+  <div class="stage-two-hotspot-layer">
+    <button class="stage-two-hotspot hotspot-drain" type="button" data-target="drain" aria-label="查看排水溝污染介紹"><img src="assets/touch.png" alt="點選排水溝"></button>
+    <button class="stage-two-hotspot hotspot-river" type="button" data-target="river" aria-label="查看河川污染介紹"><img src="assets/touch.png" alt="點選河川"></button>
+    <button class="stage-two-hotspot hotspot-firelane" type="button" data-target="firelane" aria-label="查看防火巷污染介紹"><img src="assets/touch.png" alt="點選防火巷"></button>
+    <button class="stage-two-hotspot hotspot-pipe" type="button" data-target="pipe" aria-label="查看老舊管線污染介紹"><img src="assets/touch.png" alt="點選老舊管線"></button>
+  </div>
+  <div class="stage-two-overlay-layer">
+    <p class="stage-two-caption" id="stageTwoCaption" data-text="點擊畫面中區域了解污染來源！" aria-live="polite"></p>
+  </div>
+</section>
+<section class="stage-three screen" id="stageThree" aria-label="階段三：問題越來越多了" aria-hidden="true">
+  <div class="stage-three-background"></div>
+
+  <div class="stage-three-character-layer">
+    <div class="stage-three-character stage-three-aze">
+      <img src="assets/stage3-aze.png" alt="污水工程師阿澤">
+    </div>
+    <div class="stage-three-character stage-three-littlewhite">
+      <img src="assets/stage3-littlewhite.png" alt="正在說話的小白">
+    </div>
+  </div>
+
+  <div class="stage-three-dialogue-layer" aria-live="polite">
+    <div class="stage-three-dialogue stage-three-littlewhite-dialogue">
+      <img src="assets/stage3-littlewhite-dialogue.png" alt="小白：原來，不只是河川生病了，大家生活的環境也受到影響。">
+    </div>
+    <div class="stage-three-dialogue stage-three-aze-dialogue">
+      <img src="assets/stage3-aze-dialogue.png" alt="阿澤：如果把污水好好收集，環境一定會慢慢變好。">
+    </div>
+  </div>
+
+  <div class="stage-three-ui-layer">
+    <img class="stage-three-frame-ui" src="assets/common/all_ui.png" alt="">
+    <img class="stage-three-count-ui" src="assets/stage3-count-ui.png" alt="階段 3/9">
+    <img class="stage-three-title-main-ui" src="assets/stage3-title-ui.png" alt="問題越來越多了">
+    <img class="stage-three-subtitle-ui" src="assets/stage3-title-ui.png" alt="我們該怎麼辦？">
+    <button class="stage-three-sound-button" type="button" aria-label="切換音效" aria-pressed="true"><img src="assets/common/sound_ui.png" alt="音效"></button>
+    <button class="stage-three-back-button" type="button" aria-label="返回階段二"><img src="assets/common/previous_ui.png" alt="返回"></button>
+    <button class="stage-three-next-button" type="button" aria-label="進入下一階段"><img src="assets/common/next_ui.png" alt="下一階段"></button>
+  </div>
+</section>
+<section class="stage-four screen" id="stageFour" aria-label="階段四：大家分工合作" aria-hidden="true"></section>
+<section class="stage-five screen" id="stageFive" aria-label="階段五：計畫相關資訊導覽" aria-hidden="true"></section>
+<section class="stage-six screen" id="stageSix" aria-label="階段六：發現看不見的努力" aria-hidden="true"></section>
+<section class="stage-seven screen" id="stageSeven" aria-label="階段七：人孔蓋堵塞怎麼辦" aria-hidden="true"></section>
+<section class="stage-eight screen" id="stageEight" aria-label="階段八：什麼可以丟馬桶" aria-hidden="true"></section>
+<section class="stage-nine screen" id="stageNine" aria-label="階段九：用戶維管事項" aria-hidden="true"></section>
+<section class="stage-ten screen" id="stageTen" aria-label="結尾關卡：中壢水境觀看" aria-hidden="true"></section>
+</div></main><script defer src="js/audio.js"></script><script defer src="js/home.js"></script><script defer src="js/stage-one.js"></script><script defer src="js/stage-two.js"></script><script defer src="js/stage-three.js"></script><script defer src="js/stage-four.js"></script><script defer src="js/stage-five-search-source.js"></script><script defer src="js/stage-five.js"></script><script defer src="js/stage-six.js"></script><script defer src="js/stage-seven.js"></script><script defer src="js/stage-eight.js"></script><script defer src="js/stage-nine.js"></script><script defer src="js/stage-ten.js"></script><script defer src="js/app.js"></script></body></html>
